@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chiringuito</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="cart.js" defer></script>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-premium glass-panel">
+        <div class="logo">Chiringuito</div>
+        <div class="nav-links-center-layout">
+            <a href="#menu-title">Menú</a>
+            <a href="sobre-nosotros.html">Sobre Nosotros</a>
+        </div>
+        <div class="nav-actions-layout">
+            <div class="lang-dropdown-wrapper">
+                <button class="lang-btn-premium active" onclick="document.getElementById('lang-list').classList.toggle('show')">
+                    ES <i class="fas fa-chevron-down"></i>
+                </button>
+                <div id="lang-list" class="lang-list-premium">
+                    <button id="btn-es" class="lang-list-item active">ES</button>
+                    <button id="btn-en" class="lang-list-item">EN</button>
+                </div>
+            </div>
+            
+            <a href="https://wa.me/573138961302?text=¡Hola!%20Me%20gustaría%20reservar%20una%20mesa." target="_blank" class="whatsapp-nav-btn">
+                <i class="fab fa-whatsapp"></i> Reservar
+            </a>
+        </div>
+    </nav>
+
+    <header class="hero" id="hero-section">
+        <div class="hero-bg-slider">
+            <div class="hero-bg-slide active" style="background-image: url('images/Chiringuito_1.jpg');"></div>
+            <div class="hero-bg-slide" style="background-image: url('images/Chiringuito_2.jpg');"></div>
+            <div class="hero-bg-slide" style="background-image: url('images/Chiringuito_3.jpg');"></div>
+            <div class="hero-bg-slide" style="background-image: url('images/Chiringuito_4.jpg');"></div>
+        </div>
+        <div class="overlay"></div>
+        <div class="hero-content">
+            <h1 id="hero-title">Chiringuito: MI COCINA ES UNA EXPERIENCIA</h1>
+        </div>
+        <div class="scroll-indicator">
+            <span>Explorar</span>
+            <div class="scroll-mouse">
+                <div class="scroll-wheel"></div>
+            </div>
+        </div>
+    </header>
+
+    <section class="menu-experience">
+        <h2 id="menu-title" class="section-title text-center">Nuestra Experiencia Gastronómica</h2>
+        <p id="menu-intro" class="text-center subtitle">Te sugiero probar cada detalle de este viaje de sabores.</p>
+
+        <!-- Entradas -->
+        <div class="menu-category">
+            <h3 id="appetizers-title" class="category-title">Entradas</h3>
+            <div class="carousel-wrapper">
+                <button class="carousel-btn prev-btn" onclick="slideCarousel('appetizers-grid', -1)"><i
+                        class="fas fa-chevron-left"></i></button>
+                <div class="menu-grid" id="appetizers-grid">
+                    <!-- Injected via JS -->
+                </div>
+                <button class="carousel-btn next-btn" onclick="slideCarousel('appetizers-grid', 1)"><i
+                        class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+
+        <!-- Platos Fuertes -->
+        <div class="menu-category mains-section" id="mains-section-bg">
+            <div class="mains-overlay"></div>
+            <div class="mains-content">
+                <h3 id="mains-title" class="category-title text-white">Platos Fuertes</h3>
+                <div class="carousel-wrapper">
+                    <button class="carousel-btn prev-btn" onclick="slideCarousel('mains-grid', -1)"><i
+                            class="fas fa-chevron-left"></i></button>
+                    <div class="menu-grid" id="mains-grid">
+                        <!-- Injected via JS -->
+                    </div>
+                    <button class="carousel-btn next-btn" onclick="slideCarousel('mains-grid', 1)"><i
+                            class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pizzas -->
+        <div class="menu-category pizzas-section" id="pizzas-section-bg">
+            <div class="pizzas-overlay"></div>
+            <div class="pizzas-content">
+                <h3 id="pizzas-title" class="category-title text-white">Pizzas Artesanales</h3>
+                <p id="pizzas-intro" class="first-person-text text-white text-center">
+                    "Las preparo con masa artesanal de larga maduración para que sientas la textura perfecta en cada
+                    bocado."
+                </p>
+                <div class="carousel-wrapper">
+                    <button class="carousel-btn prev-btn" onclick="slideCarousel('pizzas-grid', -1)"><i
+                            class="fas fa-chevron-left"></i></button>
+                    <div class="menu-grid" id="pizzas-grid">
+                        <!-- Injected via JS -->
+                    </div>
+                    <button class="carousel-btn next-btn" onclick="slideCarousel('pizzas-grid', 1)"><i
+                            class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Comidas Rápidas -->
+        <div class="menu-category mt-5 pt-5">
+            <h3 id="fastfood-title" class="category-title">Comidas Rápidas</h3>
+            <div class="carousel-wrapper">
+                <button class="carousel-btn prev-btn" onclick="slideCarousel('fastfood-grid', -1)"><i
+                        class="fas fa-chevron-left"></i></button>
+                <div class="menu-grid" id="fastfood-grid">
+                    <!-- Injected via JS -->
+                </div>
+                <button class="carousel-btn next-btn" onclick="slideCarousel('fastfood-grid', 1)"><i
+                        class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+
+        <!-- Pastas -->
+        <div class="menu-category mt-5 pt-5">
+            <h3 id="pastas-title" class="category-title">Pastas</h3>
+            <div class="carousel-wrapper">
+                <div class="menu-grid grid-centered" id="pastas-grid">
+                    <!-- Injected via JS -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Postres -->
+        <div class="menu-category mt-5 pt-5">
+            <h3 id="desserts-title" class="category-title">Postres</h3>
+            <div class="carousel-wrapper">
+                <div class="menu-grid grid-centered" id="desserts-grid">
+                    <!-- Injected via JS -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Bebidas: Para Refrescar el Paladar -->
+        <div class="menu-category mt-5 pt-5 drinks-minimal-section">
+            <h3 id="drinks-refresh-title" class="category-title">Para Refrescar el Paladar</h3>
+            <p id="drinks-refresh-intro" class="first-person-text text-center"
+                style="margin-bottom:3rem; max-width:800px; margin-left:auto; margin-right:auto;"></p>
+            <div class="menu-grid drinks-grid" id="drinks-refresh-grid">
+                <!-- Injected via JS -->
+            </div>
+        </div>
+
+        <!-- Bebidas: La Cava de Chiringuito -->
+        <div class="menu-category mt-5 pt-5 cava-section">
+            <div class="cava-container">
+                <h3 id="drinks-cava-title" class="category-title" style="color: var(--accent-gold);">La Cava de
+                    Chiringuito: Vinos y Licores</h3>
+                <p id="drinks-cava-intro" class="first-person-text text-center" style="margin-bottom:2rem;"></p>
+
+                <h4 id="drinks-wines-title"
+                    style="font-family: var(--font-serif); font-size: 1.5rem; text-align: center; margin-bottom: 1rem; color: var(--text-main);">
+                </h4>
+                <p id="drinks-wines-intro" class="text-center" style="color: var(--text-muted); margin-bottom: 3rem;">
+                </p>
+
+                <div class="menu-grid drinks-grid" id="drinks-cava-grid">
+                    <!-- Injected via JS -->
+                </div>
+
+                <div class="liquors-note mt-5 text-center">
+                    <h4 id="liquors-title"
+                        style="font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 1rem; color: var(--accent-gold);">
+                    </h4>
+                    <p id="liquors-text" class="first-person-text"
+                        style="font-style: italic; color: var(--text-main); opacity: 0.9;"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer-premium">
+        <div class="footer-container-premium">
+            
+            <!-- First Column: Chiringuito -->
+            <div class="footer-column">
+                <div>
+                    <h2 class="footer-logo-premium">Chiringuito</h2>
+                    <p id="footer-location" class="footer-loc-text"><i class="fas fa-map-marker-alt"></i> KM 6 Mocoa - Vía Villa Garzón, Posada Turística Dantayaco</p>
+                </div>
+                <a href="https://wa.me/573138961302?text=¡Hola!%20Me%20gustaría%20reservar%20una%20mesa." target="_blank" class="whatsapp-btn-xl whatsapp-footer-btn">
+                    <i class="fab fa-whatsapp"></i> <span id="whatsapp-btn-text">Reserva tu Experiencia</span>
+                </a>
+            </div>
+            
+            <!-- Separator -->
+            <div class="footer-divider-premium"></div>
+            
+            <!-- Second Column: Consultoría -->
+            <div class="footer-column">
+                <div>
+                    <img src="images/consultoria-logo.png" alt="Logo Consultoría" class="footer-consultoria-logo">
+                    <h4 class="footer-consultoria-title">Consultoría e Innovación</h4>
+                </div>
+                <a href="https://wa.me/573247357111?text=¡Hola!%20Me%20gustaría%20información%20sobre%20Consultoría%20e%20Innovación" target="_blank" class="whatsapp-btn-xl whatsapp-footer-btn">
+                    <i class="fab fa-whatsapp"></i> <span>Contactar Consultoría</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Flavor Selection Modal -->
+    <div id="flavor-modal" class="modal">
+        <div class="modal-content flavor-modal-content-premium">
+            <span class="close-modal" onclick="closeFlavorModal()">&times;</span>
+            <h3 id="flavor-modal-title">Selecciona tu Sabor</h3>
+
+            <div style="position: relative; margin-bottom: 2rem;">
+                <select id="flavor-select" class="cart-input-premium">
+                    <!-- Options injected via JS -->
+                </select>
+                <!-- Custom dropdown arrow -->
+                <i class="fas fa-chevron-down" style="position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); color: var(--text-muted); pointer-events: none; font-size: 0.8rem;"></i>
+            </div>
+
+            <button class="checkout-btn" onclick="confirmFlavorSelection()" id="btn-confirm-flavor" style="width: 100%;">
+                Confirmar
+            </button>
+        </div>
+    </div>
+
+    <!-- Info Modal -->
+    <div id="info-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <h3 id="modal-title"></h3>
+            <p id="modal-text"></p>
+        </div>
+    </div>
+
+    <!-- Floating Cart Button -->
+    <button id="floating-cart-btn" class="floating-cart-btn" onclick="toggleCart()">
+        <i class="fas fa-shopping-bag"></i>
+        <span id="cart-count">0</span>
+    </button>
+
+    <!-- Cart Sidebar -->
+    <div id="cart-overlay" class="cart-overlay" onclick="toggleCart()"></div>
+    <div id="cart-sidebar" class="cart-sidebar">
+        <div class="cart-header">
+            <h3 id="cart-title">Tu Orden</h3>
+            <button class="close-cart" onclick="toggleCart()"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-items-container" id="cart-items-container">
+            <p id="cart-empty" class="cart-empty-msg">El carrito está vacío.</p>
+        </div>
+        <div class="cart-footer-premium">
+            <div class="cart-total-row-premium">
+                <span id="cart-total-label">Total:</span>
+                <span id="cart-total-price">$ 0</span>
+            </div>
+            <input type="text" id="customer-name" class="cart-input-premium" placeholder="Tu Nombre / Your Name">
+            <button class="checkout-btn" id="btn-checkout" onclick="checkout()">
+                <i class="fab fa-whatsapp"></i> Enviar Orden
+            </button>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+    <script>
+        // Hero Background Slider
+        document.addEventListener('DOMContentLoaded', () => {
+            const slides = document.querySelectorAll('.hero-bg-slide');
+            if (slides.length === 0) return;
+            let currentIndex = 0;
+
+            function moverHeroSlider() {
+                slides[currentIndex].classList.remove('active');
+                currentIndex = (currentIndex + 1) % slides.length;
+                slides[currentIndex].classList.add('active');
+            }
+
+            setInterval(moverHeroSlider, 4000); // Changes every 4 seconds
+        });
+    </script>
+</body>
+
+</html>

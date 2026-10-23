@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chiringuito - Detalles de la Experiencia</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="cart.js" defer></script>
+    <style>
+        /* Specific styles for details page */
+        .details-category-header {
+            width: 100%;
+            max-width: 1200px;
+            margin: 2rem auto 0;
+            padding: 10px 20px;
+            border: 1px solid var(--accent-primary);
+            text-align: right;
+            border-radius: 4px;
+        }
+        
+        .details-category-header h3 {
+            color: var(--accent-primary);
+            font-family: var(--font-sans);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        .dish-detail-section {
+            padding: 8rem 2rem 4rem;
+            min-height: 100vh;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            display: flex;
+            align-items: center;
+        }
+
+        .dish-detail-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .carousel-wrapper {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .carousel-slide {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+        }
+
+        .carousel-slide.active {
+            opacity: 1;
+        }
+
+        .carousel-controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 1rem;
+            transform: translateY(-50%);
+            z-index: 10;
+        }
+
+        .carousel-btn {
+            background: rgba(18, 18, 18, 0.7);
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .carousel-btn:hover {
+            background: var(--accent-gold);
+            color: var(--bg-dark);
+        }
+
+        .detail-text-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .detail-essence {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-main);
+            font-family: var(--font-sans);
+        }
+
+        .ingredients-list {
+            margin-top: 1rem;
+            padding-left: 1.5rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+            font-style: italic;
+        }
+
+        .details-title-premium {
+            margin-bottom: 0.5rem;
+        }
+        
+        .details-ingredients-title {
+            color: var(--accent-gold);
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+        }
+        
+        .details-order-btn-premium {
+            width: fit-content !important;
+            margin-top: 1rem !important;
+            padding: 1rem 2rem !important;
+            border-radius: 30px !important;
+        }
+
+        .back-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: var(--accent-gold);
+        }
+
+        @media (max-width: 900px) {
+            .dish-detail-container {
+                grid-template-columns: 1fr;
+            }
+            .carousel-wrapper {
+                height: 350px;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <nav class="navbar navbar-premium glass-panel">
+        <a href="index.html" class="back-link" id="btn-back">
+            <i class="fas fa-arrow-left"></i> Volver al Menú
+        </a>
+        <div class="lang-switch">
+            <button id="btn-es" class="lang-btn active">ES</button>
+            <button id="btn-en" class="lang-btn">EN</button>
+        </div>
+    </nav>
+
+    <!-- Content injected via JS -->
+    <main id="details-container"></main>
+    <!-- Floating Cart Button -->
+    <button id="floating-cart-btn" class="floating-cart-btn" onclick="toggleCart()">
+        <i class="fas fa-shopping-bag"></i>
+        <span id="cart-count">0</span>
+    </button>
+
+    <!-- Cart Sidebar -->
+    <div id="cart-overlay" class="cart-overlay" onclick="toggleCart()"></div>
+    <div id="cart-sidebar" class="cart-sidebar">
+        <div class="cart-header">
+            <h3 id="cart-title">Tu Orden</h3>
+            <button class="close-cart" onclick="toggleCart()"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-items-container" id="cart-items-container">
+            <p id="cart-empty" class="cart-empty-msg">El carrito está vacío.</p>
+        </div>
+        <div class="cart-footer-premium">
+            <div class="cart-total-row-premium">
+                <span id="cart-total-label">Total:</span>
+                <span id="cart-total-price">$ 0</span>
+            </div>
+            <input type="text" id="customer-name" class="cart-input-premium" placeholder="Tu Nombre / Your Name">
+            <button class="checkout-btn" id="btn-checkout" onclick="checkout()">
+                <i class="fab fa-whatsapp"></i> Enviar Orden
+            </button>
+        </div>
+    </div>
+
+    <script src="detalles.js"></script>
+</body>
+</html>

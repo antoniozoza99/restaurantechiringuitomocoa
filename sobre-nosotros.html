@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conoce más SOBRE NOSOTROS - Chiringuito</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Collage Layout */
+        .collage-section {
+            padding: 4rem 5% 8rem;
+            max-width: 1300px;
+            margin: auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .collage-images {
+            flex: 1;
+            min-width: 400px;
+            position: relative;
+            min-height: 600px;
+        }
+
+        .collage-img-1 {
+            width: 65%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 4px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 2;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+        }
+
+        .collage-img-2 {
+            width: 55%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 4px;
+            position: absolute;
+            top: 60%;
+            right: 0;
+            z-index: 1;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.8);
+        }
+
+        .collage-img-3 {
+            width: 50%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 4px;
+            position: absolute;
+            bottom: -100px;
+            left: 10%;
+            z-index: 3;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.8);
+        }
+
+        .collage-bg-block {
+            position: absolute;
+            top: -10%;
+            right: -5%;
+            width: 60%;
+            height: 70%;
+            background: linear-gradient(135deg, rgba(212,175,55,0.2) 0%, rgba(13,13,13,0) 100%);
+            z-index: 0;
+            border: 1px solid rgba(212,175,55,0.3);
+        }
+
+        .collage-text {
+            flex: 1;
+            min-width: 400px;
+            padding: 2rem;
+        }
+
+        .collage-title {
+            font-family: var(--font-serif);
+            font-size: 2.8rem;
+            color: var(--accent-gold);
+            margin-bottom: 2rem;
+            line-height: 1.2;
+        }
+
+        .collage-desc {
+            font-family: var(--font-sans);
+            font-size: 1.1rem;
+            color: var(--text-main);
+            opacity: 0.9;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .signature-wrapper {
+            margin-top: 2rem;
+        }
+
+        .signature-img {
+            max-height: 60px;
+            filter: opacity(0.8);
+        }
+
+        /* Original History text */
+        .history-section { 
+            padding: 4rem 5% 6rem; 
+            max-width: 1000px; 
+            margin: auto; 
+        }
+        .history-text { 
+            font-family: var(--font-serif); 
+            font-size: 1.4rem; 
+            line-height: 2; 
+            color: var(--text-main); 
+            margin-bottom: 2rem; 
+            font-style: italic;
+            text-align: center;
+            opacity: 0.85;
+        }
+
+        /* Team Section */
+        .team-section {
+            padding: 6rem 5%;
+            background: rgba(255,255,255,0.02);
+            border-top: 1px solid rgba(212,175,55,0.2);
+            position: relative;
+        }
+
+        .team-slider-wrapper {
+            position: relative;
+            max-width: 1300px;
+            margin: auto;
+        }
+
+        .team-slider {
+            display: flex;
+            gap: 2rem;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            padding-bottom: 2rem;
+            scrollbar-width: none; /* Firefox */
+        }
+
+        .team-slider::-webkit-scrollbar {
+            display: none;
+        }
+
+        .team-card {
+            flex: 0 0 calc(33.333% - 1.33rem);
+            min-width: 280px;
+            background: var(--bg-card);
+            border: 1px solid rgba(212,175,55,0.2);
+            border-radius: 8px;
+            overflow: hidden;
+            scroll-snap-align: center;
+            transition: transform 0.4s ease;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-gold);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+
+        .team-img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border-bottom: 2px solid var(--accent-gold);
+            filter: grayscale(30%) contrast(1.1);
+            transition: filter 0.4s ease;
+        }
+
+        .team-card:hover .team-img {
+            filter: grayscale(0%) contrast(1);
+        }
+
+        .team-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .team-name {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            color: var(--accent-gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .team-role {
+            font-family: var(--font-sans);
+            font-weight: 600;
+            color: var(--text-main);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .team-desc {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .hero-about {
+            height: 40vh !important;
+            min-height: 300px !important;
+        }
+
+        .hero-title-about {
+            font-size: 3.5rem !important;
+            white-space: nowrap;
+        }
+
+        .team-section-title {
+            margin-bottom: 3rem;
+        }
+
+        @media (max-width: 900px) {
+            .collage-images { min-height: 450px; }
+            .team-card { flex: 0 0 calc(50% - 1rem); }
+        }
+        @media (max-width: 600px) {
+            .team-card { flex: 0 0 100%; }
+            .collage-title { font-size: 2.2rem; }
+            .collage-img-1 { width: 80%; }
+            .collage-img-2 { width: 65%; top: 50%; }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-premium glass-panel">
+        <div class="logo"><a href="index.html" style="color: inherit; text-decoration: none;">Chiringuito</a></div>
+        <div class="lang-switch">
+            <a href="index.html" class="lang-btn active" style="text-decoration:none;">Volver al Menú</a>
+        </div>
+    </nav>
+
+    <header class="hero hero-about" id="hero-section">
+        <div class="overlay"></div>
+        <div class="hero-content">
+            <h1 id="hero-title" class="hero-title-about">Conoce más SOBRE NOSOTROS</h1>
+        </div>
+    </header>
+
+    <!-- 1. Collage Design Section -->
+    <section class="collage-section">
+        <div class="collage-images">
+            <div class="collage-bg-block"></div>
+            <!-- Perfil Chef -->
+            <img src="images/Chiringuito_4.jpg" alt="Chef Chiringuito" class="collage-img-1">
+            <!-- Plato 1 -->
+            <img src="images/PLATOS FUERTES/LOMO DE RES EN SALSA DE QUESO AZUL/Lomo_queso_azul_.jpg" alt="Plato Especial" class="collage-img-2">
+            <!-- Plato 2 -->
+            <img src="images/PLATOS FUERTES/PIRAROKU EN SALSA DE AZAÍ/PIRARUKU_ASAI_AMAZONAS_.jpg" alt="Pirarokú" class="collage-img-3">
+        </div>
+        
+        <div class="collage-text">
+            <h2 class="collage-title">Una historia de tradición y pasión</h2>
+            <p class="collage-desc">
+                "Mi historia comenzó entre los aromas de la cocina comunitaria en la Posada Turística Dantayaco. Allí, recibiendo a mochileros y viajeros de todo el mundo, no solo compartí recetas; aprendí de sus culturas, de sus sabores favoritos and de sus técnicas. Ese intercambio constante me transformó.
+            </p>
+            <p class="collage-desc">
+                Hoy, en Chiringuito, cada plato es una evolución de ese aprendizaje: una mezcla de la sofisticación global que conocí y el amor por los ingredientes de mi tierra. Mis creaciones no son solo recetas al azar; son el resultado de años de perfeccionar ese 'toque de la casa' que hoy quiero compartir contigo."
+            </p>
+            <p class="collage-desc">
+                Nos esforzamos por utilizar siempre los ingredientes más frescos y de la más alta calidad, poniendo el corazón y el alma de nuestra cocina amazónica y global en cada creación. Ofrecemos un servicio amigable y personalizado, haciendo de cada visita una experiencia memorable.
+            </p>
+            <div class="signature-wrapper">
+                <img src="images/consultoria-logo.png" alt="Firma" class="signature-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Equipo Section -->
+    <section class="team-section">
+        <h2 class="section-title text-center team-section-title">Nuestro Equipo</h2>
+        <div class="team-slider-wrapper">
+            <div class="team-slider" id="teamSlider">
+                <!-- Chef Principal -->
+                <div class="team-card">
+                    <img src="images/Chiringuito_3.jpg" alt="Chef Principal" class="team-img">
+                    <div class="team-info">
+                        <h3 class="team-name">Chef Principal</h3>
+                        <p class="team-role">Líder Culinario</p>
+                        <p class="team-desc">El creador detrás de los sabores inconfundibles de Chiringuito. Aporta la visión, la fusión amazónica y el alma de cada receta.</p>
+                    </div>
+                </div>
+                <!-- Chef Secundario -->
+                <div class="team-card">
+                    <img src="images/Chiringuito_1.jpg" alt="Chef Secundario" class="team-img">
+                    <div class="team-info">
+                        <h3 class="team-name">Chef Secundario</h3>
+                        <p class="team-role">Magia en Ejecución</p>
+                        <p class="team-desc">Mano derecha en la cocina, garantizando que cada técnica y cocción alcance la perfección para llegar a tu mesa.</p>
+                    </div>
+                </div>
+                <!-- Ayudante de Cocina -->
+                <div class="team-card">
+                    <img src="images/Chiringuito_2.jpg" alt="Ayudante de Cocina" class="team-img">
+                    <div class="team-info">
+                        <h3 class="team-name">Ayudante de Cocina</h3>
+                        <p class="team-role">El Motor del Sabor</p>
+                        <p class="team-desc">Pieza clave en la preparación, cuidando la frescura de cada ingrediente antes de convertirse en arte culinario.</p>
+                    </div>
+                </div>
+                <!-- Mesera -->
+                <div class="team-card">
+                    <img src="images/hero.jpg" alt="Mesera" class="team-img">
+                    <div class="team-info">
+                        <h3 class="team-name">Atención al Cliente</h3>
+                        <p class="team-role">Mesera Estrella</p>
+                        <p class="team-desc">La sonrisa que te da la bienvenida y el servicio personalizado que convierte tu cena en una experiencia inolvidable.</p>
+                    </div>
+                </div>
+                <!-- Cocinero Comida Rápida -->
+                <div class="team-card">
+                    <img src="images/pollo.jpg" alt="Cocinero Comida Rápida" class="team-img">
+                    <div class="team-info">
+                        <h3 class="team-name">Especialista Fast Food</h3>
+                        <p class="team-role">Sabor Crunch</p>
+                        <p class="team-desc">Maestro en hamburguesas, pizzas y comidas rápidas. Rápido, preciso y siempre con el mejor sabor callejero-gourmet.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-premium">
+        <div class="footer-container-premium">
+            <div class="footer-column">
+                <div>
+                    <h2 class="footer-logo-premium">Chiringuito</h2>
+                    <p id="footer-location" class="footer-loc-text"><i class="fas fa-map-marker-alt"></i> Visit us at KM 6 Mocoa - Vía Villa Garzón, Posada Turística Dantayaco</p>
+                </div>
+            </div>
+            
+            <div class="footer-divider-premium"></div>
+            
+            <div class="footer-column">
+                <div>
+                    <img src="images/consultoria-logo.png" alt="Logo Consultoría e Innovación" class="footer-consultoria-logo" style="max-height: 120px;">
+                    <h4 class="footer-consultoria-title" style="letter-spacing: 2px; font-size: 1.1rem;">Consultoría e Innovación</h4>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
